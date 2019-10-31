@@ -62,3 +62,14 @@ public class Main {
 除了使用ArrayList和LinkedList，我们还可以通过List接口提供的of()方法，根据给定元素快速创建List
 但是List.of()方法不接受null值，如果传入null，会抛出NullPointerException异常。
 List<Integer> list = List.of(1, 2, 5);
+
+
+遍历List
+public For_List{
+  public static void main(String[] args){
+    List<Integer> test = List.of(1,3,66);
+    for(Integer i : test){
+        System.out.println(i);
+    }
+   }
+}
