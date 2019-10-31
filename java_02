@@ -1,0 +1,18 @@
+数组
+是引用类型
+整形数组：
+int[] ns = new int[5] ；申请5个空间，后续赋值
+或者
+int[] ns = new int[] {18，2，3，1，1}；
+定义时初始化，编译器自动计算长度大小
+
+数组初始化后大小不可变；
+数组只能按索引顺序存取。
+
+在集合类collection中，有list，set，map
+
+===============
+
+List：一种有序列表的集合，例如，按索引排列的Student的List；
+Set：一种保证没有重复元素的集合，例如，所有无重复名称的Student的Set；
+Map：一种通过键值（key-value）查找的映射表集合，例如，根据Student的name查找对应Student的Map。
