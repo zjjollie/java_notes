@@ -1,0 +1,252 @@
+&And: equivalent to multiplication 1 & 1 1
+
+|Or: equivalent to add 1 1 1 1 1
+
+
+
+Short circuit operation:
+
+&&If the first one is false, the expression is false
+
+||If the first one is true, the expression is true
+
+
+
+
+In floating-point operations, 2 integers are not automatically converted to floating-point numbers.
+
+24.0/4 becomes floating point
+
+
+
+Interfaces are implemented, and abstract classes are inherited.
+
+Interface can be used as type, can be used as parameter type, when declaring.
+
+
+
+Reference type and value type:
+
+Reference types are very different from value types in storage.
+
+The value type is allocated memory directly by the compiler. (on the stack)
+
+
+
+After the reference type declaration, the compiler allocates only a little stack memory (only used as the record address) to create an instance, and then allocates the space on the memory heap. The address of the space on the heap is saved in the small space allocated on the stack. There is a kind of directivity.
+
+
+
+=====================================
+
+
+
+Note that if we customize a constructor, the compiler will no longer automatically create the default constructor.
+
+class People｛
+
+public People （String name）｛｝
+
+A kind of
+
+
+
+
+This method has the same name but different parameters. It is called method overload. Method overloads usually have the same return value type.
+
+=====================================
+
+
+
+Class Person {
+
+    protected String name;
+
+    protected int age;
+
+
+
+    public Person(String name, int age) {
+
+        this.name = name;
+
+        this.age = age;
+
+}
+
+}
+
+
+
+class Student extends Person {
+
+protected int score;
+
+public Student(String name, int age, int score) {
+
+Super (name, age); / / call the construction method of the parent class this.score = score;
+
+}
+
+}
+
+If the parent class does not have a default constructor, the child class must explicitly call super () and give the arguments so that the compiler can locate a suitable constructor for the parent class.
+
+
+
+
+The person type P1 actually points to the student instance, and the person type variable P2 actually points to the person instance. In the process of downward transformation, P1 is transformed into student
+
+It will succeed because P1 does point to the student instance, and it will fail to convert P2 to student. Because the actual type of P2 is person, the parent class cannot be changed into a child class,
+
+Because the function of a subclass is more than that of a parent, multiple functions cannot be changed out of nothing.
+
+
+
+
+Therefore, inheritance is an is relation and combination is a has relation.
+
+That is, students can hold a Book instance
+
+
+
+
+Method override, which is embodied in polymorphism. The subclass rewrites the method of the parent class (the method name, parameter and return type cannot be changed), and can dynamically call the method of the specific instance.
+
+Person  s =new Student()
+
+S is a variable with the actual type of student and the reference type of person
+
+
+
+When declaring, the reference type only occupies a small space of the stack, and the object is put on the heap after the instance. Dynamic calls are methods of objects on the heap, not of reference type.
+
+
+
+
+Inheritance allows subclasses to override methods of the parent class.
+
+If a parent class does not allow a child class to override one of its methods, mark the method as final
+
+
+
+If the method itself of the parent class does not need to implement any function, just to define the method signature, and the purpose is to let the child class override it, then the method of the parent class can be declared as an abstract method
+
+Class Person {
+
+public abstract void run();
+
+}
+
+
+
+The compiler will tell us that the person class cannot be compiled because it contains abstract methods.
+
+The person class itself must also be declared abstract in order to compile it correctly
+
+
+
+
+Because abstract methods cannot be executed, the class must also be declared abstract class.
+
+A class decorated with abstract is an abstract class. We cannot instantiate an abstract class.
+
+
+
+Because the abstract class itself is designed to be used only for inheritance, the abstract class can force the subclass to implement the abstract methods defined by it, or the compilation will report an error. Therefore, an abstract method is actually equivalent to defining a "specification".
+
+
+
+For example, if the person class defines the abstract method run (), then the run () method must be overridden when implementing the subclass student
+
+
+
+
+Abstract oriented programming makes callers only care about the definition of abstract methods, not the concrete implementation of subclasses.
+
+
+
+If an abstract class has no fields and all methods are abstract methods, the abstract class can be rewritten as interface.
+
+
+
+The so-called interface is a pure abstract interface more abstract than an abstract class, because it cannot even have fields.
+
+Because all methods defined by the interface are public abstract by default, the two modifiers do not need to be written out (the effect is the same whether they are written or not).
+
+
+
+interface Person {
+
+ void run();
+
+String getName();
+
+}
+
+
+
+When a specific class implements an interface, it needs to use the implements keyword. for instance:
+
+
+
+class Student implements Person {
+
+Private String name;
+
+public Student(String name) {
+
+This.name = name;
+
+}
+
+@Override
+
+public void run(){
+
+System.out.println(this.name + " run");
+
+}
+
+@Override
+
+Public String getName () {
+
+return this.name;
+
+}
+
+}
+
+In Java, a class can only inherit from another class, not from multiple classes. However, a class can implement multiple interfaces
+
+
+
+One interface can inherit from another. Interface inherits from the interface using extensions, which is equivalent to extending the interface's methods.
+
+
+
+interface Hello {
+
+ void hello();
+
+}
+
+
+
+interface Person extends Hello {
+
+ void run();
+
+ String getName();
+
+}
+
+
+
+The person interface now actually has three abstract method signatures.
+
+
+
+
+When used, instantiated
